@@ -3,8 +3,9 @@
 
 #include <stdio.h>
 
-void hidden_function() {
+int hidden_function() {
   printf("Hello, Im Hidden!\n");
+  return 0;
 }
 
 int main() {
