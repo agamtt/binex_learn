@@ -19,6 +19,7 @@ void get_shell() {
 int main() {
   char buf[0x28];
 
+  printf("buf = (%p)\n", buf);
   init();
 
   printf("Input: ");
