@@ -1,0 +1,4 @@
+byte_string = b'\x48\x65\x6c\x6c\x6f\x20\x77\x6f\x72\x6c\x64\x21\xff\xfe\xfd\xfc'
+print(byte_string)
+
+print(''.join(f'\\x{byte:02x}' for byte in byte_string))
